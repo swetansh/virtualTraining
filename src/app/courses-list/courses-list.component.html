@@ -1,0 +1,59 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row" [hidden]="showDeveloper">
+    <p-dataTable [value]="courses" [rows]="10" [paginator]="true" selectionMode="single" [(selection)]="selectedCourse" [headerCheckboxToggleAllPages]="true">
+      <p-header>List of Courses</p-header>
+      <p-column [style]="{'width':'38px'}" selectionMode="single"></p-column>
+      <p-column field="examName" header="Course Name" [filter]="true" filterPlaceholder="Search courses">
+
+      </p-column>
+      <p-column field="passMarks" header="Passing Marks">
+
+      </p-column>
+    </p-dataTable>
+
+    <br/>
+    <button pButton type="button" (click)="showEmployees()" label="Assign" [disabled]="selectedCourse==null"></button>
+
+  </div>
+ 
+    
+
+
+  <div class="row" [hidden]="!showDeveloper">
+
+    <a class="text">{{selectedCourses?.name}}</a>
+  </div>
+
+  <div class="row" [hidden]="!showDeveloper">
+
+    <p-dataTable [value]="developers" [rows]="10" [paginator]="true" selectionMode="multiple" [(selection)]="selectedDevelopers"
+      [headerCheckboxToggleAllPages]="true">
+      <p-header>List of Employees</p-header>
+      <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+      <p-column field="userName" header="Employee Name" [filter]="true" filterPlaceholder="Search employee">
+
+      </p-column>
+    </p-dataTable>
+    <br/>
+    <div class="row">
+      <div class=" ui-g-12 ui-md-4">
+        <h4>Expected Start Date: </h4>
+        <p-calendar [(ngModel)]="startDate" [showIcon]="true" [minDate]="startMinDate" readonlyInput="true" [disabled]="selectedDevelopers.length==0"></p-calendar> {{date4|date}}
+      </div>
+
+      <div class="ui-g-12 ui-md-4">
+        <h4>Expected End Date: </h4>
+        <p-calendar [(ngModel)]="endDate" [showIcon]="true" [minDate]="startDate" [disabled]="!startDate" readonlyInput="true"></p-calendar> {{date4|date}}
+      </div>
+    </div>
+    <br/>
+    <div class=" row ui-g-12 ui-md-4">
+      <p-button label="Assign" [disabled]="selectedDevelopers.length==0 || endDate==null || startDate==null" (click)="assignCourses()"></p-button>
+    </div>
+
+
+
+
+  </div>
+</div>

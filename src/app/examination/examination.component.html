@@ -1,0 +1,53 @@
+<app-header></app-header>
+<div class="container">
+  <div class="row" *ngIf="examQuestion">
+    <form (ngSubmit)="onSubmit()">
+      <div class="row form-group">
+        <h2>
+          <span class="text-left">{{course}}</span>
+          <span class="text-right"> Time left : - {{countDown }}</span>
+        </h2>
+      </div>
+
+      <div class="row form-group">
+        <div *ngFor="let question of questions;let i=index;" class="row form-group">
+          <div class="badge badge-info">Question {{i + 1}}:-</div>
+          <!-- <h2>{{pager.index + 1}}.  -->
+          <span [innerHTML]="question.question_name"></span>
+          <div>
+            <div class="col-md-6" *ngFor="let option of question.options;let j=index;">
+              <div class="radio">
+                <label class="text-justify">
+                  <!-- <input id="{{option.Id}}" name="optio" type="radio"  
+            [(ngModel)]="option.IsAnswer" (change)="onSelect(question, option);" /> -->
+                  <p-radioButton name="{{question.question_id}}" label="{{option}}" value="{{option}}" (onClick)="onSelect(question, option);">
+
+                  </p-radioButton>
+
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="reset" class="btn btn-default" (click)="cancel()">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+  <div class="row" *ngIf="resultsPage">
+    <div class="row form-group">
+      <h2>
+        <span class="text-right"> Score : {{examScore }}</span>
+        <br>
+        <span class="text-right"> Exam Result : {{examResult }}</span>
+      </h2>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+<app-login></app-login>
+
+<app-registration></app-registration>

@@ -1,0 +1,95 @@
+<!-- Default form register -->
+<div id="registerModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="fh5co-contact-info">
+          <span style="font-weight: bold; font-size: 20px;color: black;">Register</span>
+        </div>
+        <img src="images/flogo_white.png" style="float: right;margin-top: -7%" />
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+          <!-- Default id  -->
+          <label for="defaultFormRegisterIdEx" class="grey-text">Employee Id</label>
+          <input type="text" id="defaultFormRegisterIdEx" formControlName="userId" class="form-control">
+          <div *ngIf="form.controls.userId.invalid && form.controls.userId.touched" class="text-danger">
+            Enter your employee Id
+          </div>
+
+
+
+          <!-- Default input name -->
+          <label for="defaultFormRegisterNameEx" class="grey-text">User Name</label>
+          <input type="text" id="defaultFormRegisterNameEx" formControlName="userName" class="form-control">
+          <div *ngIf="form.controls.userName.invalid && form.controls.userName.touched" class="text-danger">
+            Username must be of minimum 8 characters
+          </div>
+
+
+
+          <!-- Default input email -->
+          <label for="defaultFormRegisterEmailEx" class="grey-text">Email</label>
+          <input type="email" id="defaultFormRegisterEmailEx" formControlName="email" class="form-control">
+          <div *ngIf="form.controls.email.invalid && form.controls.email.touched" class="text-danger">
+            Email is inavlid
+          </div>
+
+
+
+
+          <!-- Default input email -->
+          <label for="defaultFormRegisterConfirmEx" class="grey-text">Password</label>
+          <input type="password" id="defaultFormRegisterConfirmEx" formControlName="password" class="form-control">
+          <div *ngIf="form.controls.password.invalid && form.controls.password.touched" class="text-danger">
+            Password must be of minimum 5 characters
+          </div>
+
+
+
+          <!-- Default input password -->
+          <label for="defaultFormRegisterPasswordEx" class="grey-text">Confirm Password</label>
+          <input type="password" id="defaultFormRegisterPasswordEx" formControlName="confirmPassword" class="form-control">
+          <div *ngIf="form.controls.confirmPassword.invalid && form.controls.confirmPassword.touched" class="text-danger">
+            Confirm password must be of minimum 5 characters
+          </div>
+
+          <!--<label for="inputRole" class="grey-text">Role</label>
+                 <select id="roleId" formControlName="roleId" class="form-control">
+                   <option *ngFor="let d of roles; let i = index;" [ngValue]="i+1">{{ d }}</option>
+               </select>-->
+
+          <label for="inputCountry" class="grey-text">Country</label>
+          <select id="country" formControlName="country" class="form-control">
+            <option *ngFor="let c of countries" [ngValue]="c">{{ c }}</option>
+          </select>
+
+
+
+
+
+          <label for="inputDept" class="grey-text">Department</label>
+          <select id="department" formControlName="department" class="form-control">
+            <option *ngFor="let d of departments" [ngValue]="d">{{ d }}</option>
+          </select>
+
+
+
+          <label for="inputSkill" class="grey-text">Skill</label>
+          <select id="skillCategory" formControlName="skillCategory" class="form-control">
+            <option *ngFor="let s of skills" [ngValue]="s">{{ s }}</option>
+          </select>
+
+          <br>
+
+          <div class="text-center">
+            <button type="reset" class="btn btn-default">Reset</button>
+            <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

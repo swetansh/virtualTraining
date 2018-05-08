@@ -1,0 +1,37 @@
+<!-- Default form register -->
+<app-header></app-header>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form [formGroup]="form" enctype="multipart/form-data" >
+        <p class="h4 text-center">
+          <strong>Create a Course</strong>
+        </p>
+
+        <br>
+        <input type="radio" name="optradio" id="optradio" value="videoUpload" (click)="setradio('videoUpload')" [checked]= "isChecked">
+        <label for="videoUpload" class="grey-text">Upload Video</label>
+        <input type="file" id="videoUpload" formControlName="videoUpload" class="form-control" (change)="selectFile($event)" *ngIf="isSelected('videoUpload')" placeholder="Upload Video file" accept=".mp4" >
+
+        <br>
+
+        <input type="radio" name="optradio" id="optradio" value="fileUpload" (click)="setradio('fileUpload')">
+        <label for="fileUpload" class="grey-text">Upload PDF/EBook</label>
+        <input type="file" id="fileUpload" formControlName="fileUpload" class="form-control" accept=".*" (change)="selectFile($event)"  placeholder="Upload Document" *ngIf="isSelected('fileUpload')">
+
+        <br>
+
+        <div class="text-center">
+          <button type="reset" class="btn btn-default" (click)="gotoHome()">Cancel</button>
+          <!-- <button type="button" [disabled]="!form.valid" (click)="selectFile($event)" class="btn btn-primary">Upload</button> -->
+          <button type="reset" [disabled]="!form.valid" class="btn btn-primary" (click)="clearMessage()">Upload</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>
+<app-login ></app-login>
+
+<app-registration></app-registration>

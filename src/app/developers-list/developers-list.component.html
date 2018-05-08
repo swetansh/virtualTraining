@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div class="container">
+
+  <p-dataTable [value]="developers" [rows]="1" [paginator]="true" selectionMode="multiple" [(selection)]="selectedDevelopers"
+    [headerCheckboxToggleAllPages]="true">
+    <p-header>List of Developers</p-header>
+    <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+    <p-column field="name" header="Developer Name" [filter]="true" filterPlaceholder="Search developer">
+
+    </p-column>
+  </p-dataTable>
+</div>
